@@ -1,7 +1,9 @@
-name: Text Arena CD Pipeline
+name: Text Arena CI Pipeline
 
 on:
   push:
+    branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -55,7 +57,7 @@ jobs:
 
       # Docker 이미지 빌드, 태그 및 레지스트리에 푸시
       - name: docker image build
-        run: docker build -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/text_arena .
+        run: docker build -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/text-arena .
 
       - name: docker Hub push
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/text_arena
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/text-arena
