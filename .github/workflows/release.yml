@@ -57,7 +57,7 @@ jobs:
 
       # Docker 이미지 빌드, 태그 및 레지스트리에 푸시
       - name: docker image build
-        run: docker build -f Dockerfile -t m020202@naver.com/TextArena .
+        run: docker build -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/textarena .
 
       - name: docker Hub push
-        run: docker push m020202@naver.com/TextArena
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/textarena
