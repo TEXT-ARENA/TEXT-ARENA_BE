@@ -21,9 +21,6 @@ public class User {
     @Column(name = "username", length = 50, nullable = false)
     private String username;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "password")
+    private String password;
 }
