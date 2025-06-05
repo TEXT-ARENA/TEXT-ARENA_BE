@@ -2,7 +2,6 @@ package cc.team3.character.service;
 
 import cc.team3.character.converter.CharacterConverter;
 import cc.team3.character.domain.Character;
-import cc.team3.character.domain.Effect;
 import cc.team3.character.domain.Equipment;
 import cc.team3.character.dto.CharacterRequest;
 import cc.team3.character.dto.CharacterResponse;
@@ -29,11 +28,8 @@ public class CharacterService {
 
     @Transactional
     public CharacterResponse.CharacterDetailsResponseDTO createCharacter(Long userId, CharacterRequest.CharacterCreateRequestDTO request) {
-        // 임시 테스트용
-        CharacterResponse.CharacterCreateResponseDTO characterDTO = forTest();
-
-//        // AI 서버로부터 API 요청
-//        CharacterResponse.CharacterCreateResponseDTO characterDTO = aiServerClient.createCharacter(request);
+        // AI 서버로부터 API 요청
+        CharacterResponse.CharacterCreateResponseDTO characterDTO = aiServerClient.createCharacter(request);
         User user = userRepository.findById(userId).orElseThrow(() -> new GeneralException(ErrorStatus.USER_NOT_FOUND));
 
         Character character = CharacterConverter.toCharacter(user, characterDTO);
@@ -43,22 +39,10 @@ public class CharacterService {
         return readCharacter(character);
     }
 
-    private CharacterResponse.CharacterCreateResponseDTO forTest() {
-        return new CharacterResponse.CharacterCreateResponseDTO(
-                "엘라", 100, "엘라니까", 12, 5, 0.10, 1.5, 70, 0.05, 0.92, new ArrayList<>()
-        );
-    }
-
     @Transactional
     public CharacterResponse.CharacterDetailsResponseDTO createEquipment(Long characterId, CharacterRequest.CreateEquipmentRequestDTO request) {
-        // 임시 테스트용
-        List<Effect> effects = List.of(new Effect("poison", 0.25, 3, 5));
-        CharacterResponse.EquipmentDTO equipmentDTO = new CharacterResponse.EquipmentDTO(
-                "Posioned Dagger", "attackBonus", 3, effects
-        );
-
-//        // AI 서버로부터 API 요청
-//        CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request);
+        // AI 서버로부터 API 요청
+        CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request);
         String equipmentId = equipmentService.createEquipment(equipmentDTO, request.equipmentType());
 
         Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));

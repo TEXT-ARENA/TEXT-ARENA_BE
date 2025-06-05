@@ -38,7 +38,9 @@ public class CharacterResponse {
             Double criticalChance,
             Double criticalDamage,
             Integer speed,
+            String speed_reason,
             Double dodgeChance,
+            String dodgeChance_reason,
             Double accuracy,
             List<String> statusEffect
     ) {

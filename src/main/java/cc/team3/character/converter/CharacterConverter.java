@@ -36,7 +36,9 @@ public class CharacterConverter {
                 .criticalChance(request.criticalChance())
                 .criticalDamage(request.criticalDamage())
                 .speed(request.speed())
+                .speedReason(request.speed_reason())
                 .dodgeChance(request.dodgeChance())
+                .dodgeChanceReason(request.dodgeChance_reason())
                 .accuracy(request.accuracy())
                 .statusEffects(request.statusEffect())
                 .build();

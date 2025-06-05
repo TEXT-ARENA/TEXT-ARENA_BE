@@ -56,8 +56,14 @@ public class Character {
     @Column(name = "speed")
     private Integer speed;
 
+    @Column(name = "speed_reason")
+    private String speedReason;
+
     @Column(name = "dodge_chance")
     private Double dodgeChance;
+
+    @Column(name = "dodge_chance_reason")
+    private String dodgeChanceReason;
 
     @Column(name = "accuracy")
     private Double accuracy;
