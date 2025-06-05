@@ -14,6 +14,7 @@ import cc.team3.user.domain.User;
 import cc.team3.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +27,16 @@ public class CharacterService {
     private final EquipmentService equipmentService;
     private final AiServerClient aiServerClient;
 
+    @Transactional
     public CharacterResponse.CharacterDetailsResponseDTO createCharacter(Long userId, CharacterRequest.CharacterCreateRequestDTO request) {
+        // 임시 테스트용
+        CharacterResponse.CharacterCreateResponseDTO characterDTO = forTest();
+
 //        // AI 서버로부터 API 요청
 //        CharacterResponse.CharacterCreateResponseDTO characterDTO = aiServerClient.createCharacter(request);
         User user = userRepository.findById(userId).orElseThrow(() -> new GeneralException(ErrorStatus.USER_NOT_FOUND));
 
-        CharacterResponse.CharacterCreateResponseDTO characterDTO = forTest();
-        String equipmentId = equipmentService.createEquipment(characterDTO.equipmentDTOList().getFirst());
-
-        Character character = CharacterConverter.toCharacter(user, characterDTO, equipmentId);
+        Character character = CharacterConverter.toCharacter(user, characterDTO);
         characterRepository.save(character);
 
         // 리턴 값 추출.
@@ -42,20 +44,34 @@ public class CharacterService {
     }
 
     private CharacterResponse.CharacterCreateResponseDTO forTest() {
+        return new CharacterResponse.CharacterCreateResponseDTO(
+                "엘라", 100, "엘라니까", 12, 5, 0.10, 1.5, 70, 0.05, 0.92, new ArrayList<>()
+        );
+    }
+
+    @Transactional
+    public CharacterResponse.CharacterDetailsResponseDTO createEquipment(Long characterId, CharacterRequest.CreateEquipmentRequestDTO request) {
+        // 임시 테스트용
         List<Effect> effects = List.of(new Effect("poison", 0.25, 3, 5));
         CharacterResponse.EquipmentDTO equipmentDTO = new CharacterResponse.EquipmentDTO(
-                "Posioned Dagger", "weapon", "attackBonus",3, effects
+                "Posioned Dagger", "weapon", "attackBonus",
+                3, effects
         );
-        List<CharacterResponse.EquipmentDTO> equipmentDTOList = List.of(equipmentDTO);
-        return new CharacterResponse.CharacterCreateResponseDTO(
-                "엘라", 100, "엘라니까", 12, 5, 0.10, 1.5, 70, 0.05, 0.92, equipmentDTOList, new ArrayList<>()
-        );
+
+//        // AI 서버로부터 API 요청
+//        CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request);
+        String equipmentId = equipmentService.createEquipment(equipmentDTO);
+
+        Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+        character.getEquipmentIds().add(equipmentId);
+
+        return readCharacter(character);
     }
 
     public CharacterResponse.CharacterDetailsResponseDTO readCharacter(Character character) {
         List<String> equipmentIds = character.getEquipmentIds();
+        List<Equipment> equipments = (equipmentIds.isEmpty()) ? new ArrayList<>() : equipmentService.findEquipments(equipmentIds);
 
-        List<Equipment> equipments = equipmentService.findEquipments(equipmentIds);
         return CharacterConverter.toCharacterDetailsResponseDTO(character, equipments);
     }
 }

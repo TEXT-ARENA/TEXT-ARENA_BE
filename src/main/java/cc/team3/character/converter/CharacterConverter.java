@@ -10,6 +10,7 @@ import java.util.List;
 public class CharacterConverter {
     public static CharacterResponse.CharacterDetailsResponseDTO toCharacterDetailsResponseDTO(Character character, List<Equipment> equipmentList) {
         return new CharacterResponse.CharacterDetailsResponseDTO(
+                character.getCharacterId(),
                 character.getCharacterName(),
                 character.getHp(),
                 character.getHp_reason(),
@@ -24,8 +25,7 @@ public class CharacterConverter {
         );
     }
 
-    public static Character toCharacter(User user, CharacterResponse.CharacterCreateResponseDTO request, String equipmentId) {
-        List<String> equipmentList = List.of(equipmentId);
+    public static Character toCharacter(User user, CharacterResponse.CharacterCreateResponseDTO request) {
         return Character.builder()
                 .user(user)
                 .characterName(request.name())
@@ -38,7 +38,6 @@ public class CharacterConverter {
                 .speed(request.speed())
                 .dodgeChance(request.dodgeChance())
                 .accuracy(request.accuracy())
-                .equipmentIds(equipmentList)
                 .statusEffects(request.statusEffect())
                 .build();
     }
