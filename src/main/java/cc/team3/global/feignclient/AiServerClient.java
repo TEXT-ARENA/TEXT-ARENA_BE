@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface AiServerClient {
 
     @PostMapping("/api/characters")
-    CharacterResponse.CharacterCreateResultDTO createCharacter(@RequestBody CharacterRequest.CharacterCreateRequestDTO request);
+    CharacterResponse.CharacterCreateResponseDTO createCharacter(@RequestBody CharacterRequest.CharacterCreateRequestDTO request);
 }
