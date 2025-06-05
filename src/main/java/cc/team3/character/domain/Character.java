@@ -28,11 +28,11 @@ public class Character {
     @Column(name = "character_name", length = 50, nullable = false)
     private String characterName;
 
-    @Column(name = "description", nullable = false)
-    private String description;
-
     @Column(name = "hp")
     private Integer hp;
+
+    @Column(name = "hp_reason")
+    private String hp_reason;
 
     @Column(name = "attack")
     private Integer attack;

@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum EquipmentType {
-    WEAPON("WEAPON"),
-    TOP("TOP"),
-    BOTTOM("BOTTOM"),
-    SHOES("SHOES");
+    weapon("weapon"),
+    top("top"),
+    bottom("bottom"),
+    shoes("shoes");
 
     private final String description;
 
