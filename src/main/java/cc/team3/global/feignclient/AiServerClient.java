@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "aiServerClient", url = "http://1.2.3.4:8080")
+@FeignClient(name = "aiServerClient", url = "http://3.236.223.83:8000")
 public interface AiServerClient {
 
     @PostMapping("/api/characters")
