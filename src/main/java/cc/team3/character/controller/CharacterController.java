@@ -18,7 +18,7 @@ public class CharacterController {
         return ApiResponse.onSuccess(characterService.createCharacter(userId, request));
     }
 
-    @PostMapping("/{characterId}/weapons")
+    @PostMapping("/{characterId}/equipments")
     public ApiResponse<CharacterResponse.CharacterDetailsResponseDTO> createWeapon(@RequestParam("characterId") Long characterId, @RequestBody CharacterRequest.CreateEquipmentRequestDTO request) {
         return ApiResponse.onSuccess(characterService.createEquipment(characterId, request));
     }
