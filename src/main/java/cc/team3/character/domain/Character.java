@@ -7,12 +7,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Table(name = "characters")
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,19 +24,11 @@ public class Character {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "character_name", length = 12, nullable = false)
+    @Column(name = "character_name", length = 50, nullable = false)
     private String characterName;
 
-    @Column(name = "description", length = 30, nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
-
-    @Column(name = "exp")
-    @Builder.Default
-    private Integer exp = 0;
-
-    @Column(name = "level")
-    @Builder.Default
-    private Integer level = 1;
 
     @Column(name = "hp")
     private Integer hp;
@@ -45,6 +38,12 @@ public class Character {
 
     @Column(name = "defense")
     private Integer defense;
+
+    @Column(name = "exp")
+    private Integer exp;
+
+    @Column(name = "level")
+    private Integer level;
 
     @Column(name = "critical_chance")
     private Double criticalChance;
@@ -60,4 +59,12 @@ public class Character {
 
     @Column(name = "accuracy")
     private Double accuracy;
+
+    @ElementCollection
+    @CollectionTable(name = "equipments")
+    private List<String> equipmentIds; // MongoDB의 장비 ID들
+
+    @ElementCollection
+    @CollectionTable(name = "status_effects")
+    private List<String> statusEffects;
 }
