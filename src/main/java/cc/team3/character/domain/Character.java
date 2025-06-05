@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -63,7 +64,8 @@ public class Character {
 
     @ElementCollection
     @CollectionTable(name = "equipments")
-    private List<String> equipmentIds; // MongoDB의 장비 ID들
+    @Builder.Default
+    private List<String> equipmentIds = new ArrayList<>(); // MongoDB의 장비 ID들
 
     @ElementCollection
     @CollectionTable(name = "status_effects")
