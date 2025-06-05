@@ -9,13 +9,15 @@ public class CharacterResponse {
     public record CharacterDetailsResponseDTO(
             String name,
             Integer hp,
+            String hp_reason,
             Integer attack,
             Integer defense,
             Double criticalChance,
             Double criticalDamage,
             Integer speed,
             Double dodgeChance,
-            List<Equipment> equipments
+            List<Equipment> equipments,
+            List<String> statusEffects
     ) {}
 
     public record EquipmentDTO(
@@ -30,6 +32,7 @@ public class CharacterResponse {
     public record CharacterCreateResponseDTO(
             String name,
             Integer hp,
+            String hpReason,
             Integer attack,
             Integer defense,
             Double criticalChance,
