@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Builder
 @AllArgsConstructor
@@ -23,28 +26,26 @@ public class Character {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "character_name", length = 12, nullable = false)
+    @Column(name = "character_name", length = 50, nullable = false)
     private String characterName;
-
-    @Column(name = "description", length = 30, nullable = false)
-    private String description;
-
-    @Column(name = "exp")
-    @Builder.Default
-    private Integer exp = 0;
-
-    @Column(name = "level")
-    @Builder.Default
-    private Integer level = 1;
 
     @Column(name = "hp")
     private Integer hp;
+
+    @Column(name = "hp_reason")
+    private String hp_reason;
 
     @Column(name = "attack")
     private Integer attack;
 
     @Column(name = "defense")
     private Integer defense;
+
+    @Column(name = "exp")
+    private Integer exp;
+
+    @Column(name = "level")
+    private Integer level;
 
     @Column(name = "critical_chance")
     private Double criticalChance;
@@ -60,4 +61,13 @@ public class Character {
 
     @Column(name = "accuracy")
     private Double accuracy;
+
+    @ElementCollection
+    @CollectionTable(name = "equipments")
+    @Builder.Default
+    private List<String> equipmentIds = new ArrayList<>(); // MongoDB의 장비 ID들
+
+    @ElementCollection
+    @CollectionTable(name = "status_effects")
+    private List<String> statusEffects;
 }
