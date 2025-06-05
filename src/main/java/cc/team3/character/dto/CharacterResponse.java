@@ -7,6 +7,7 @@ import java.util.List;
 
 public class CharacterResponse {
     public record CharacterDetailsResponseDTO(
+            Long characterId,
             String name,
             Integer hp,
             String hp_reason,
@@ -40,9 +41,7 @@ public class CharacterResponse {
             Integer speed,
             Double dodgeChance,
             Double accuracy,
-            List<EquipmentDTO> equipmentDTOList,
             List<String> statusEffect
-
     ) {
     }
 }
