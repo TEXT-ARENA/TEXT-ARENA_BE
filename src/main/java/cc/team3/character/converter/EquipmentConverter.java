@@ -1,6 +1,5 @@
 package cc.team3.character.converter;
 
-import cc.team3.character.domain.Effect;
 import cc.team3.character.domain.Equipment;
 import cc.team3.character.domain.enums.EquipmentType;
 import cc.team3.character.dto.CharacterResponse;
@@ -8,8 +7,8 @@ import cc.team3.character.dto.CharacterResponse;
 import java.util.List;
 
 public class EquipmentConverter {
-    public static Equipment toEquipment(CharacterResponse.EquipmentDTO request) {
-        EquipmentType equipmentType = EquipmentType.fromDescription(request.type());
+    public static Equipment toEquipment(CharacterResponse.EquipmentDTO request, String type) {
+        EquipmentType equipmentType = EquipmentType.fromDescription(type);
         return Equipment.builder()
                 .name(request.name())
                 .type(equipmentType)

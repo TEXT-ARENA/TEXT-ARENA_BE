@@ -54,13 +54,12 @@ public class CharacterService {
         // 임시 테스트용
         List<Effect> effects = List.of(new Effect("poison", 0.25, 3, 5));
         CharacterResponse.EquipmentDTO equipmentDTO = new CharacterResponse.EquipmentDTO(
-                "Posioned Dagger", "weapon", "attackBonus",
-                3, effects
+                "Posioned Dagger", "attackBonus", 3, effects
         );
 
 //        // AI 서버로부터 API 요청
 //        CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request);
-        String equipmentId = equipmentService.createEquipment(equipmentDTO);
+        String equipmentId = equipmentService.createEquipment(equipmentDTO, request.equipmentType());
 
         Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
         character.getEquipmentIds().add(equipmentId);

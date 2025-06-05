@@ -18,8 +18,8 @@ public class EquipmentService {
     private final EquipmentRepository equipmentRepository;
 
     @Transactional
-    public String createEquipment(CharacterResponse.EquipmentDTO equipmentDTO) {
-        Equipment equipment = EquipmentConverter.toEquipment(equipmentDTO);
+    public String createEquipment(CharacterResponse.EquipmentDTO equipmentDTO, String equipmentType) {
+        Equipment equipment = EquipmentConverter.toEquipment(equipmentDTO, equipmentType);
         equipmentRepository.save(equipment);
 
         return equipment.getId();
