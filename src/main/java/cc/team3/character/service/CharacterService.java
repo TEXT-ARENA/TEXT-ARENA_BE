@@ -29,10 +29,10 @@ public class CharacterService {
     @Transactional
     public CharacterResponse.CharacterDetailsResponseDTO createCharacter(Long userId, CharacterRequest.CharacterCreateRequestDTO request) {
         // AI 서버로부터 API 요청
-        CharacterResponse.CharacterCreateResponseDTO characterDTO = aiServerClient.createCharacter(request);
+        CharacterResponse.CharacterCreateResponseDTO characterDTO = aiServerClient.createCharacter(request).getResult();
         User user = userRepository.findById(userId).orElseThrow(() -> new GeneralException(ErrorStatus.USER_NOT_FOUND));
 
-        Character character = CharacterConverter.toCharacter(user, characterDTO);
+        Character character = CharacterConverter.toCharacter(user, characterDTO, request.characterName());
         characterRepository.save(character);
 
         // 리턴 값 추출.

@@ -2,6 +2,7 @@ package cc.team3.global.feignclient;
 
 import cc.team3.character.dto.CharacterRequest;
 import cc.team3.character.dto.CharacterResponse;
+import cc.team3.global.apiPayload.ApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface AiServerClient {
 
     @PostMapping("/api/characters")
-    CharacterResponse.CharacterCreateResponseDTO createCharacter(@RequestBody CharacterRequest.CharacterCreateRequestDTO request);
+    ApiResponse<CharacterResponse.CharacterCreateResponseDTO> createCharacter(@RequestBody CharacterRequest.CharacterCreateRequestDTO request);
 
     @PostMapping("/api/equipments")
     CharacterResponse.EquipmentDTO createEquipment(@RequestBody CharacterRequest.CreateEquipmentRequestDTO request);
