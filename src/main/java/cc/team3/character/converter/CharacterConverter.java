@@ -5,6 +5,7 @@ import cc.team3.character.domain.Equipment;
 import cc.team3.character.dto.CharacterResponse;
 import cc.team3.user.domain.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterConverter {
@@ -20,17 +21,18 @@ public class CharacterConverter {
                 character.getCriticalDamage(),
                 character.getSpeed(),
                 character.getDodgeChance(),
+                character.getAccuracy(),
                 equipmentList,
                 character.getStatusEffects()
         );
     }
 
-    public static Character toCharacter(User user, CharacterResponse.CharacterCreateResponseDTO request) {
+    public static Character toCharacter(User user, CharacterResponse.CharacterCreateResponseDTO request, String characterName) {
         return Character.builder()
                 .user(user)
-                .characterName(request.name())
+                .characterName(characterName)
                 .hp(request.hp())
-                .hp_reason(request.hpReason())
+                .hp_reason(request.hp_reason())
                 .attack(request.attack())
                 .defense(request.defense())
                 .criticalChance(request.criticalChance())
@@ -38,7 +40,7 @@ public class CharacterConverter {
                 .speed(request.speed())
                 .dodgeChance(request.dodgeChance())
                 .accuracy(request.accuracy())
-                .statusEffects(request.statusEffect())
+                .statusEffects(new ArrayList<>())
                 .build();
     }
 }
