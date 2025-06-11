@@ -42,10 +42,12 @@ public class Character {
     private Integer defense;
 
     @Column(name = "exp")
-    private Integer exp;
+    @Builder.Default
+    private Integer exp = 0;
 
     @Column(name = "level")
-    private Integer level;
+    @Builder.Default
+    private Integer level = 1;
 
     @Column(name = "critical_chance")
     private Double criticalChance;
