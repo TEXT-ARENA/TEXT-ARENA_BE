@@ -22,6 +22,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // User 관련
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_401", "해당 유저를 찾을 수 없습니다."),
+    PASSWORD_MISMATCH(HttpStatus.UNAUTHORIZED, "USER_402", "비밀번호가 일치하지 않습니다."),
 
     // Character 관련
     CHARACTER_NOT_FOUND(HttpStatus.NOT_FOUND, "CHARACTER_401", "해당 캐릭터를 찾을 수 없습니다."),

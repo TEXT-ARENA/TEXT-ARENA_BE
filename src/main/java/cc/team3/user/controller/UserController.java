@@ -16,7 +16,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ApiResponse<Long> saveUser(@RequestBody UserRequest.UserCreateRequestDTO request) {
-        return ApiResponse.onSuccess(userService.saveUser(request));
+    public ApiResponse<Long> loginOrRegister(@RequestBody UserRequest.UserLoginRequestDTO request) {
+        return ApiResponse.onSuccess(userService.loginOrRegister(request));
     }
 }
