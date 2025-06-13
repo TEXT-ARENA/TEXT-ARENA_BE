@@ -9,7 +9,7 @@ public class UserRequest {
     }
 
     public record UserLoginRequestDTO(
-        @JsonProperty("user_id") String username,
+        String username,
         String password
     ) {
         
