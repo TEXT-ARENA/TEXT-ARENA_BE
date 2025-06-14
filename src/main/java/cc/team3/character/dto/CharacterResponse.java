@@ -43,4 +43,12 @@ public class CharacterResponse {
             Double accuracy
     ) {
     }
+
+    public record ReadCharacterListDTO(
+            Long characterId,
+            String name,
+            Integer hp,
+            Integer attack,
+            Integer defense
+    ) {}
 }
