@@ -26,6 +26,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // Character 관련
     CHARACTER_NOT_FOUND(HttpStatus.NOT_FOUND, "CHARACTER_401", "해당 캐릭터를 찾을 수 없습니다."),
+    EMPTY_BATTLE_OPPONENT(HttpStatus.NOT_FOUND, "CHARACTER_402", "대결할 상대가 없습니다."),
     ;
 
     private final HttpStatus httpStatus;
