@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/characters")
@@ -20,9 +22,17 @@ public class CharacterController {
     }
 
     @Operation(summary = "장비 생성", description = "장비를 생성하고자 하는 캐릭터  ID를 넣어주세요 ! <br><br>" +
-        "equipmentType: 무기, 모자, 상의, 신발 중 하나 입력해주세요 ! <br> equipmentName: 장비 이름 <br> description: 장비 설명")
+            "equipmentType: 무기, 모자, 상의, 신발 중 하나 입력해주세요 ! <br> equipmentName: 장비 이름 <br> description: 장비 설명")
     @PostMapping("/{characterId}/equipments")
     public ApiResponse<CharacterResponse.CharacterDetailsResponseDTO> createWeapon(@PathVariable("characterId") Long characterId, @RequestBody CharacterRequest.CreateEquipmentRequestDTO request) {
         return ApiResponse.onSuccess(characterService.createEquipment(characterId, request));
     }
+
+    @Operation(summary = "캐릭터 목록 조회", description = "캐릭터 목록을 조회하고자 하는 유저의 ID를 넣어주세요 !")
+    @GetMapping("/list/{userId}")
+    public ApiResponse<List<CharacterResponse.ReadCharacterListDTO>> getCharacterList(@PathVariable("userId") Long userId) {
+        return ApiResponse.onSuccess(characterService.readCharacterList(userId));
+    }
 }
+
+

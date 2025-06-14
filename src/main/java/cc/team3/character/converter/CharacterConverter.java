@@ -43,4 +43,13 @@ public class CharacterConverter {
                 .statusEffects(new ArrayList<>())
                 .build();
     }
+
+    public static CharacterResponse.ReadCharacterListDTO toReadCharacterListDTO(Character character) {
+        return new CharacterResponse.ReadCharacterListDTO(
+                character.getCharacterId(),
+                character.getCharacterName(),
+                character.getHp(),
+                character.getAttack(),
+                character.getDefense());
+    }
 }

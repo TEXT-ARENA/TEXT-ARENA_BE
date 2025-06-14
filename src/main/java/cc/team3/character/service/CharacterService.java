@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -57,4 +58,13 @@ public class CharacterService {
 
         return CharacterConverter.toCharacterDetailsResponseDTO(character, equipments);
     }
+
+    public List<CharacterResponse.ReadCharacterListDTO> readCharacterList(Long userId) {
+        List<Character> characterList = characterRepository.findByUser_userId(userId);
+        return characterList.stream().map(c -> {
+            return CharacterConverter.toReadCharacterListDTO(c);
+        }).collect(Collectors.toList());
+    }
+
+
 }
