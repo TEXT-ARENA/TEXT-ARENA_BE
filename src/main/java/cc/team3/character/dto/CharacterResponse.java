@@ -57,7 +57,7 @@ public class CharacterResponse {
             Integer defense,
             Integer exp,
             Integer wins,
-            Integer loses
+            Integer losses
     ) {}
 
     public record DeleteCharacterResultDTO (
