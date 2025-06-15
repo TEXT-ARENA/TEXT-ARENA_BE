@@ -80,4 +80,12 @@ public class Character {
     @ElementCollection
     @CollectionTable(name = "status_effects")
     private List<String> statusEffects;
+
+    public void incrementWins() {
+        this.wins++;
+    }
+    
+    public void incrementLosses() {
+        this.losses++;
+    }
 }
