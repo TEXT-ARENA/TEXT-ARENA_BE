@@ -69,7 +69,10 @@ public class CharacterService {
                 .orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
 
         winner.incrementWins();
+        winner.addExp(100);
+
         loser.incrementLosses();
+        loser.addExp(50);
 
         return new CharacterResponse.RecordBattleResponseDTO(winner.getCharacterId(), loser.getCharacterId());
     }
