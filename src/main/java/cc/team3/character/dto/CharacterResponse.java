@@ -43,4 +43,7 @@ public class CharacterResponse {
             Double accuracy
     ) {
     }
+
+    public record RecordBattleResponseDTO(Long winnerId, Long loserId) {
+    }
 }
