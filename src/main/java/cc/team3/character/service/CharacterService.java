@@ -95,4 +95,12 @@ public class CharacterService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public CharacterResponse.DeleteCharacterResultDTO deleteCharacter(Long characterId) {
+        Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+        characterRepository.delete(character);
+
+        return CharacterConverter.toDeleteCharacterResultDTO(characterId);
+    }
 }
