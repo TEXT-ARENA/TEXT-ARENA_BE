@@ -72,6 +72,7 @@ public class CharacterService {
         loser.incrementLosses();
 
         return new CharacterResponse.RecordBattleResponseDTO(winner.getCharacterId(), loser.getCharacterId());
+    }
 
     public List<CharacterResponse.ReadCharacterListDTO> readCharacterList(Long userId) {
         List<Character> characterList = characterRepository.findByUser_userId(userId);

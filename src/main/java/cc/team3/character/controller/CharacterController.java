@@ -35,6 +35,7 @@ public class CharacterController {
     @PostMapping("/battle")
     public ApiResponse<CharacterResponse.RecordBattleResponseDTO> recordBattle(@RequestBody CharacterRequest.RecordBattleRequestDTO request) {
         return ApiResponse.onSuccess(characterService.recordBattle(request));
+    }
 
     @Operation(summary = "캐릭터 목록 조회", description = "캐릭터 목록을 조회하고자 하는 유저의 ID를 넣어주세요 !")
     @GetMapping("/list/{userId}")
