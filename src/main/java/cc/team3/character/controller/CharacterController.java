@@ -43,6 +43,12 @@ public class CharacterController {
         return ApiResponse.onSuccess(characterService.readCharacterList(userId));
     }
 
+    @Operation(summary = "장비 조회", description = "장비를 조회하고자 하는 캐릭터의 ID를 넣어주세요 !")
+    @GetMapping("/equipments/{characterId}")
+    public ApiResponse<List<CharacterResponse.ReadEquipmentsResultDTO>> readEquipments(@PathVariable("characterId") Long characterId) {
+        return ApiResponse.onSuccess(characterService.readEquipments(characterId));
+    }
+
     @Operation(summary = "내 캐릭터 및 상대 캐릭터 상세 조회", description = "전투를 희망하고자 하는 캐릭터 ID를 넣어주세요 !")
     @GetMapping("/battle/{characterId}")
     public ApiResponse<List<CharacterResponse.CharacterDetailsResponseDTO>> readCharactersForBattle(@PathVariable("characterId") Long characterId) {

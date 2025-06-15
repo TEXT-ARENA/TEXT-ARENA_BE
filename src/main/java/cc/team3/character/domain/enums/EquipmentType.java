@@ -2,9 +2,11 @@ package cc.team3.character.domain.enums;
 
 import cc.team3.global.apiPayload.exception.GeneralException;
 import cc.team3.global.apiPayload.status.ErrorStatus;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Getter
 public enum EquipmentType {
     weapon("무기"),
     hat("모자"),

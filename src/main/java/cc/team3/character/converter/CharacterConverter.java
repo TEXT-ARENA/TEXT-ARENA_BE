@@ -2,6 +2,7 @@ package cc.team3.character.converter;
 
 import cc.team3.character.domain.Character;
 import cc.team3.character.domain.Equipment;
+import cc.team3.character.domain.enums.EquipmentType;
 import cc.team3.character.dto.CharacterResponse;
 import cc.team3.user.domain.User;
 
@@ -64,6 +65,16 @@ public class CharacterConverter {
         return new CharacterResponse.DeleteCharacterResultDTO(
                 characterId,
                 LocalDateTime.now()
+        );
+    }
+
+    public static CharacterResponse.ReadEquipmentsResultDTO toReadEquipmentsResultDTO(Equipment equipment) {
+        return new CharacterResponse.ReadEquipmentsResultDTO(
+                equipment.getName(),
+                equipment.getType().getDescription(),
+                equipment.getBonusType(),
+                equipment.getBonusValue(),
+                equipment.getEffects()
         );
     }
 }

@@ -54,6 +54,15 @@ public class CharacterService {
         return readCharacter(character);
     }
 
+    public List<CharacterResponse.ReadEquipmentsResultDTO> readEquipments(Long characterId) {
+        List<String> equipmentIds = characterRepository.findEquipments(characterId);
+        List<Equipment> equipments = equipmentService.findEquipments(equipmentIds);
+
+        return equipments.stream().map(e -> {
+            return CharacterConverter.toReadEquipmentsResultDTO(e);
+        }).collect(Collectors.toList());
+    }
+
     public CharacterResponse.CharacterDetailsResponseDTO readCharacter(Character character) {
         List<String> equipmentIds = character.getEquipmentIds();
         List<Equipment> equipments = (equipmentIds.isEmpty()) ? new ArrayList<>() : equipmentService.findEquipments(equipmentIds);
