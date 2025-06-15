@@ -98,6 +98,7 @@ public class Character {
         while (this.exp >= requiredExp) {
             this.exp -= requiredExp;
             this.level++;
+            requiredExp = 100 + (this.level - 1) * 50;
         }
     }
 }
