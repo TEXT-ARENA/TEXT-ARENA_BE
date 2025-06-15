@@ -6,4 +6,7 @@ public class CharacterRequest {
 
     public record CreateEquipmentRequestDTO(String equipmentType, String equipmentName, String description) {
     }
+
+    public record RecordBattleRequestDTO(Long winnerId, Long loserId) {
+    }
 }

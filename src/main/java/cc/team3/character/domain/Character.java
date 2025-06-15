@@ -64,6 +64,14 @@ public class Character {
     @Column(name = "accuracy")
     private Double accuracy;
 
+    @Column(name = "wins")
+    @Builder.Default
+    private Integer wins = 0;
+
+    @Column(name = "losses")
+    @Builder.Default
+    private Integer losses = 0;
+
     @ElementCollection
     @CollectionTable(name = "equipments")
     @Builder.Default
@@ -72,4 +80,12 @@ public class Character {
     @ElementCollection
     @CollectionTable(name = "status_effects")
     private List<String> statusEffects;
+
+    public void incrementWins() {
+        this.wins++;
+    }
+    
+    public void incrementLosses() {
+        this.losses++;
+    }
 }

@@ -45,6 +45,9 @@ public class CharacterResponse {
     ) {
     }
 
+    public record RecordBattleResponseDTO(Long winnerId, Long loserId) {
+    }
+  
     public record ReadCharacterListDTO(
             Long characterId,
             String name,
@@ -57,4 +60,5 @@ public class CharacterResponse {
             Long characterId,
             LocalDateTime deletedAt
     ) {}
+
 }

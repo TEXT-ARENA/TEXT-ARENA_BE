@@ -61,6 +61,19 @@ public class CharacterService {
         return CharacterConverter.toCharacterDetailsResponseDTO(character, equipments);
     }
 
+    @Transactional
+    public CharacterResponse.RecordBattleResponseDTO recordBattle(CharacterRequest.RecordBattleRequestDTO request) {
+        Character winner = characterRepository.findById(request.winnerId())
+                .orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+        Character loser = characterRepository.findById(request.loserId())
+                .orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+
+        winner.incrementWins();
+        loser.incrementLosses();
+
+        return new CharacterResponse.RecordBattleResponseDTO(winner.getCharacterId(), loser.getCharacterId());
+    }
+
     public List<CharacterResponse.ReadCharacterListDTO> readCharacterList(Long userId) {
         List<Character> characterList = characterRepository.findByUser_userId(userId);
         return characterList.stream().map(c -> {
