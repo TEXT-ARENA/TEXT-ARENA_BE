@@ -16,6 +16,7 @@ public class CharacterConverter {
                 character.getCharacterName(),
                 character.getHp(),
                 character.getHp_reason(),
+                character.getExp(),
                 character.getAttack(),
                 character.getDefense(),
                 character.getCriticalChance(),
@@ -24,7 +25,9 @@ public class CharacterConverter {
                 character.getDodgeChance(),
                 character.getAccuracy(),
                 equipmentList,
-                character.getStatusEffects()
+                character.getStatusEffects(),
+                character.getWins(),
+                character.getLosses()
         );
     }
 

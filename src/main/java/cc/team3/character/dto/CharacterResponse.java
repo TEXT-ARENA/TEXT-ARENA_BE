@@ -2,7 +2,6 @@ package cc.team3.character.dto;
 
 import cc.team3.character.domain.Effect;
 import cc.team3.character.domain.Equipment;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,6 +12,7 @@ public class CharacterResponse {
             String name,
             Integer hp,
             String hp_reason,
+            Integer exp,
             Integer attack,
             Integer defense,
             Double criticalChance,
@@ -21,7 +21,9 @@ public class CharacterResponse {
             Double dodgeChance,
             Double accuracy,
             List<Equipment> equipments,
-            List<String> statusEffects
+            List<String> statusEffects,
+            Integer wins,
+            Integer losses
     ) {}
 
     public record EquipmentDTO(
