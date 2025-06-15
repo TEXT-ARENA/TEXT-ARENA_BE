@@ -65,4 +65,11 @@ public class CharacterResponse {
             LocalDateTime deletedAt
     ) {}
 
+    public record ReadEquipmentsResultDTO(
+            String name,
+            String type,
+            String bonusType,
+            Object bonusValue,
+            List<Effect> effects
+    ) {}
 }

@@ -14,4 +14,10 @@ public interface CharacterRepository extends JpaRepository<Character, Long> {
     long countByUser_userIdNot(Long userId);
 
     Page<Character> findByUser_userIdNot(Long userId, Pageable pageable);
+
+    @Query(
+            value = "SELECT equipment_ids FROM equipments WHERE character_character_id=:characterId",
+            nativeQuery = true
+    )
+    List<String> findEquipments(Long characterId);
 }
