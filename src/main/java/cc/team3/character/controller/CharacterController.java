@@ -7,6 +7,9 @@ import cc.team3.global.apiPayload.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -24,5 +27,11 @@ public class CharacterController {
     @PostMapping("/{characterId}/equipments")
     public ApiResponse<CharacterResponse.CharacterDetailsResponseDTO> createWeapon(@PathVariable("characterId") Long characterId, @RequestBody CharacterRequest.CreateEquipmentRequestDTO request) {
         return ApiResponse.onSuccess(characterService.createEquipment(characterId, request));
+    }
+
+    @Operation(summary = "전투 승패 기록", description = "승자와 패자 캐릭터 ID를 넣어주세요 !")
+    @PostMapping("/battle")
+    public ApiResponse<CharacterResponse.RecordBattleResponseDTO> recordBattle(@RequestBody CharacterRequest.RecordBattleRequestDTO request) {
+        return ApiResponse.onSuccess(characterService.recordBattle(request));
     }
 }
