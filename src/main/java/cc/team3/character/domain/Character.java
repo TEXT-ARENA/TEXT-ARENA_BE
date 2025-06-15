@@ -91,5 +91,13 @@ public class Character {
 
     public void addExp(Integer exp) {
         this.exp += exp;
+
+        // 레벨업: 1->2레벨은 100의 경험치, 2->3레벨은 150, 이후 50씩 증가
+        int requiredExp = 100 + (this.level - 1) * 50;
+        
+        while (this.exp >= requiredExp) {
+            this.exp -= requiredExp;
+            this.level++;
+        }
     }
 }
