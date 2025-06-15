@@ -53,7 +53,10 @@ public class CharacterResponse {
             String name,
             Integer hp,
             Integer attack,
-            Integer defense
+            Integer defense,
+            Integer exp,
+            Integer wins,
+            Integer loses
     ) {}
 
     public record DeleteCharacterResultDTO (

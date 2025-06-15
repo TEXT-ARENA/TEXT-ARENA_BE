@@ -51,7 +51,10 @@ public class CharacterConverter {
                 character.getCharacterName(),
                 character.getHp(),
                 character.getAttack(),
-                character.getDefense());
+                character.getDefense(),
+                character.getExp(),
+                character.getWins(),
+                character.getLosses());
     }
 
     public static CharacterResponse.DeleteCharacterResultDTO toDeleteCharacterResultDTO(Long characterId) {
