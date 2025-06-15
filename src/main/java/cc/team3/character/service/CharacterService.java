@@ -12,11 +12,14 @@ import cc.team3.global.feignclient.AiServerClient;
 import cc.team3.user.domain.User;
 import cc.team3.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -69,5 +72,47 @@ public class CharacterService {
         loser.incrementLosses();
 
         return new CharacterResponse.RecordBattleResponseDTO(winner.getCharacterId(), loser.getCharacterId());
+
+    public List<CharacterResponse.ReadCharacterListDTO> readCharacterList(Long userId) {
+        List<Character> characterList = characterRepository.findByUser_userId(userId);
+        return characterList.stream().map(c -> {
+            return CharacterConverter.toReadCharacterListDTO(c);
+        }).collect(Collectors.toList());
+    }
+
+    public List<CharacterResponse.CharacterDetailsResponseDTO> readCharactersForBattle(Long characterId) {
+        Character myCharacter = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+
+        Long myCharacterId = myCharacter.getCharacterId();
+
+        // 나를 제외한 상대방 캐릭터 수 카운트
+        long opponentCount = characterRepository.countByUser_userIdNot(myCharacterId);
+
+        if (opponentCount == 0) {
+            throw new GeneralException(ErrorStatus.EMPTY_BATTLE_OPPONENT);
+        }
+
+        // 랜덤 인덱스 생성 후 상대방 캐릭터 1명 조회
+        int randomIndex = (int) (Math.random() * opponentCount);
+        Page<Character> opponentPage = characterRepository.findByUser_userIdNot(
+                myCharacterId,
+                PageRequest.of(randomIndex, 1) // 랜덤 위치의 데이터 1개만 가져오기
+        );
+
+        Character opponentCharacter = opponentPage.getContent().get(0);
+
+        return List.of(myCharacter, opponentCharacter).stream()
+                .map(c -> {
+                    return readCharacter(c);
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public CharacterResponse.DeleteCharacterResultDTO deleteCharacter(Long characterId) {
+        Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+        characterRepository.delete(character);
+
+        return CharacterConverter.toDeleteCharacterResultDTO(characterId);
     }
 }

@@ -5,6 +5,7 @@ import cc.team3.character.domain.Equipment;
 import cc.team3.character.dto.CharacterResponse;
 import cc.team3.user.domain.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +43,21 @@ public class CharacterConverter {
                 .accuracy(request.accuracy())
                 .statusEffects(new ArrayList<>())
                 .build();
+    }
+
+    public static CharacterResponse.ReadCharacterListDTO toReadCharacterListDTO(Character character) {
+        return new CharacterResponse.ReadCharacterListDTO(
+                character.getCharacterId(),
+                character.getCharacterName(),
+                character.getHp(),
+                character.getAttack(),
+                character.getDefense());
+    }
+
+    public static CharacterResponse.DeleteCharacterResultDTO toDeleteCharacterResultDTO(Long characterId) {
+        return new CharacterResponse.DeleteCharacterResultDTO(
+                characterId,
+                LocalDateTime.now()
+        );
     }
 }
