@@ -39,6 +39,12 @@ public class CharacterController {
     public ApiResponse<List<CharacterResponse.CharacterDetailsResponseDTO>> readCharactersForBattle(@PathVariable("characterId") Long characterId) {
         return ApiResponse.onSuccess(characterService.readCharactersForBattle(characterId));
     }
+
+    @Operation(summary = "캐릭터 삭제", description = "삭제하고자 하는 캐릭터 ID를 넣어주세요 !")
+    @DeleteMapping("/{characterId}")
+    public ApiResponse<CharacterResponse.DeleteCharacterResultDTO> deleteCharacter(@PathVariable("characterId") Long characterId) {
+        return ApiResponse.onSuccess(characterService.deleteCharacter(characterId));
+    }
 }
 
 

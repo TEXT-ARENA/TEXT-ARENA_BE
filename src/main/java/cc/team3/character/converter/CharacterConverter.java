@@ -5,6 +5,7 @@ import cc.team3.character.domain.Equipment;
 import cc.team3.character.dto.CharacterResponse;
 import cc.team3.user.domain.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,5 +52,12 @@ public class CharacterConverter {
                 character.getHp(),
                 character.getAttack(),
                 character.getDefense());
+    }
+
+    public static CharacterResponse.DeleteCharacterResultDTO toDeleteCharacterResultDTO(Long characterId) {
+        return new CharacterResponse.DeleteCharacterResultDTO(
+                characterId,
+                LocalDateTime.now()
+        );
     }
 }
