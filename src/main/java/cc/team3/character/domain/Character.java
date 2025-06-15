@@ -88,4 +88,8 @@ public class Character {
     public void incrementLosses() {
         this.losses++;
     }
+
+    public void addExp(Integer exp) {
+        this.exp += exp;
+    }
 }
