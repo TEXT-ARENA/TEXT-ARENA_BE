@@ -9,8 +9,8 @@ import lombok.Getter;
 @Getter
 public class Effect {
     private String type;
-    private String type_reason;
+    private String typeReason;
     private Double chance;
     private Integer duration;
-    private Integer damageForTurn;
+    private Integer bonusIncreasePerTurn;
 }

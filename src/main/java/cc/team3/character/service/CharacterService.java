@@ -45,7 +45,7 @@ public class CharacterService {
     @Transactional
     public CharacterResponse.CharacterDetailsResponseDTO createEquipment(Long characterId, CharacterRequest.CreateEquipmentRequestDTO request) {
         // AI 서버로부터 API 요청
-        CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request);
+        CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request).getResult();
         String equipmentId = equipmentService.createEquipment(equipmentDTO, request.equipmentName(), request.equipmentType());
 
         Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));

@@ -14,5 +14,5 @@ public interface AiServerClient {
     ApiResponse<CharacterResponse.CharacterCreateResponseDTO> createCharacter(@RequestBody CharacterRequest.CharacterCreateRequestDTO request);
 
     @PostMapping("/api/equipments")
-    CharacterResponse.EquipmentDTO createEquipment(@RequestBody CharacterRequest.CreateEquipmentRequestDTO request);
+    ApiResponse<CharacterResponse.EquipmentDTO> createEquipment(@RequestBody CharacterRequest.CreateEquipmentRequestDTO request);
 }

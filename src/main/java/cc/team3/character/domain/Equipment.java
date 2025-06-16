@@ -19,6 +19,6 @@ public class Equipment {
     private String name;
     private EquipmentType type; // WEAPON, TOP, BOTTOM, SHOES
     private String bonusType; // "attackBonus", "defenseBonus", "speedBonus" 등
-    private Object bonusValue; // 보너스 값 (int, double 등)
+    private Double bonusValue;
     private List<Effect> effects;
 }
