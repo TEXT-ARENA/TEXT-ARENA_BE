@@ -44,6 +44,9 @@ public class CharacterService {
 
     @Transactional
     public CharacterResponse.CharacterDetailsResponseDTO createEquipment(Long characterId, CharacterRequest.CreateEquipmentRequestDTO request) {
+        // 중복 체크
+        validateDuplicateEquipmentType(characterId, request.equipmentType());
+
         // AI 서버로부터 API 요청
         CharacterResponse.EquipmentDTO equipmentDTO = aiServerClient.createEquipment(request).getResult();
         String equipmentId = equipmentService.createEquipment(equipmentDTO, request.equipmentName(), request.equipmentType());
@@ -52,6 +55,17 @@ public class CharacterService {
         character.getEquipmentIds().add(equipmentId);
 
         return readCharacter(character);
+    }
+
+    private void validateDuplicateEquipmentType(Long characterId, String equipmentType) {
+        List<String> equipmentIds = characterRepository.findEquipments(characterId);
+        List<Equipment> equipments = equipmentService.findEquipments(equipmentIds);
+
+        boolean isTypeExists = equipments.stream()
+                .anyMatch(equipment -> equipment.getType().getDescription().equals(equipmentType));
+        if (isTypeExists) {
+            throw new GeneralException(ErrorStatus.EQUIPMENT_ALREADY_EXIST);
+        }
     }
 
     public List<CharacterResponse.ReadEquipmentsResultDTO> readEquipments(Long characterId) {
