@@ -1,9 +1,5 @@
 # TEXT-ARENA_BE
 
-## System Architecure
-<img width="700" height="500" alt="스크린샷 2025-06-15 오후 2 06 42" src="https://github.com/user-attachments/assets/5aabb86b-c5aa-4895-877a-b19a5d0af8d6" />
-
-
 ## Commit
 | 커밋 타입 | 설명 | 예시 |
 | ------- | ---- | ---- |
