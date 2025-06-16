@@ -2,6 +2,7 @@ package cc.team3.character.service;
 
 import cc.team3.character.converter.EquipmentConverter;
 import cc.team3.character.domain.Equipment;
+import cc.team3.character.domain.enums.EquipmentType;
 import cc.team3.character.dto.CharacterResponse;
 import cc.team3.character.repository.EquipmentRepository;
 import cc.team3.global.apiPayload.exception.GeneralException;
@@ -29,4 +30,7 @@ public class EquipmentService {
         return equipmentRepository.findAllById(equipmentIds);
     }
 
+    boolean existsByIdInAndTypeDescription(List<String> equipmentIds, String equipmentType) {
+        return equipmentRepository.existsByIdInAndTypeDescription(equipmentIds, EquipmentType.fromDescription(equipmentType));
+    }
 }
