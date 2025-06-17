@@ -38,8 +38,14 @@ public class Character {
     @Column(name = "attack")
     private Integer attack;
 
+    @Column(name = "attack_reason")
+    private String attack_reason;
+
     @Column(name = "defense")
     private Integer defense;
+
+    @Column(name = "defense_reason")
+    private String defense_reason;
 
     @Column(name = "exp")
     @Builder.Default
@@ -52,17 +58,32 @@ public class Character {
     @Column(name = "critical_chance")
     private Double criticalChance;
 
+    @Column(name = "critical_chance_reason")
+    private String critical_chance_reason;
+
     @Column(name = "critical_damage")
     private Double criticalDamage;
+
+    @Column(name = "critical_damage_reason")
+    private String critical_damage_reason;
 
     @Column(name = "speed")
     private Integer speed;
 
+    @Column(name = "speed_reason")
+    private String speed_reason;
+
     @Column(name = "dodge_chance")
     private Double dodgeChance;
 
+    @Column(name = "dodge_chance_reason")
+    private String dodge_chance_reason;
+
     @Column(name = "accuracy")
     private Double accuracy;
+
+    @Column(name = "accuracy_reason")
+    private String accuracy_reason;
 
     @Column(name = "wins")
     @Builder.Default
