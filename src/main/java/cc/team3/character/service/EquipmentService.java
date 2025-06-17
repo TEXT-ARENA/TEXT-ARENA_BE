@@ -33,4 +33,8 @@ public class EquipmentService {
     boolean existsByIdInAndTypeDescription(List<String> equipmentIds, String equipmentType) {
         return equipmentRepository.existsByIdInAndTypeDescription(equipmentIds, EquipmentType.fromDescription(equipmentType));
     }
+
+    long deleteByEquipmentIds(List<String> equipmentIds) {
+        return equipmentRepository.deleteByIdIn(equipmentIds);
+    }
 }
