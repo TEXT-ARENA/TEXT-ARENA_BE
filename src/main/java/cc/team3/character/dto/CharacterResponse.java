@@ -30,7 +30,8 @@ public class CharacterResponse {
     public record EquipmentDTO(
             String bonusType,
             Double bonusValue,
-            List<Effect> effects
+            List<Effect> effects,
+            String image
     ) {
     }
 
