@@ -31,6 +31,7 @@ public class CharacterResponse {
             String bonusType,
             Double bonusValue,
             List<Effect> effects,
+            String reason,
             String image
     ) {
     }

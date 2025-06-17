@@ -21,4 +21,5 @@ public class Equipment {
     private String bonusType; // "attackBonus", "defenseBonus", "speedBonus" 등
     private Double bonusValue;
     private List<Effect> effects;
+    private String image;
 }
