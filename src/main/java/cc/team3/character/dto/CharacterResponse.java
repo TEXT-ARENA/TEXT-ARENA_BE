@@ -29,6 +29,7 @@ public class CharacterResponse {
 
     public record EquipmentDTO(
             String bonusType,
+            String bonusType_reason,
             Double bonusValue,
             List<Effect> effects,
             String reason,
@@ -75,6 +76,7 @@ public class CharacterResponse {
             String name,
             String type,
             String bonusType,
+            String bonusType_reason,
             Object bonusValue,
             List<Effect> effects
     ) {}

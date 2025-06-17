@@ -10,6 +10,7 @@ public class EquipmentConverter {
                 .name(name)
                 .type(type)
                 .bonusType(request.bonusType())
+                .bonusType_reason(request.bonusType_reason())
                 .bonusValue(request.bonusValue())
                 .effects(request.effects())
                 .imageUrl(request.imageUrl())

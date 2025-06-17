@@ -19,6 +19,7 @@ public class Equipment {
     private String name;
     private String type;
     private String bonusType; // "attackBonus", "defenseBonus", "speedBonus" 등
+    private String bonusType_reason;
     private Double bonusValue;
     private List<Effect> effects;
     private String imageUrl;

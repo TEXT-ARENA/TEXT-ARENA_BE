@@ -75,6 +75,7 @@ public class CharacterConverter {
                 equipment.getName(),
                 equipment.getType(),
                 equipment.getBonusType(),
+                equipment.getBonusType_reason(),
                 equipment.getBonusValue(),
                 equipment.getEffects()
         );
