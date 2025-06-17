@@ -18,6 +18,7 @@ public class CharacterConverter {
                 character.getHp(),
                 character.getHp_reason(),
                 character.getExp(),
+                character.getLevel(),
                 character.getAttack(),
                 character.getDefense(),
                 character.getCriticalChance(),
@@ -57,6 +58,7 @@ public class CharacterConverter {
                 character.getAttack(),
                 character.getDefense(),
                 character.getExp(),
+                character.getLevel(),
                 character.getWins(),
                 character.getLosses());
     }
