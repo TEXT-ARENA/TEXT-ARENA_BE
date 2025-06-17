@@ -12,7 +12,7 @@ public class EquipmentConverter {
                 .bonusType(request.bonusType())
                 .bonusValue(request.bonusValue())
                 .effects(request.effects())
-                .image(request.image())
+                .imageUrl(request.imageUrl())
                 .build();
     }
 }

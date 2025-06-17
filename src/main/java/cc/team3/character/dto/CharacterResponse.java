@@ -32,7 +32,7 @@ public class CharacterResponse {
             Double bonusValue,
             List<Effect> effects,
             String reason,
-            String image
+            String imageUrl
     ) {
     }
 
