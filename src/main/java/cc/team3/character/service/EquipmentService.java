@@ -30,7 +30,12 @@ public class EquipmentService {
         return equipmentRepository.findAllById(equipmentIds);
     }
 
-    boolean existsByIdInAndTypeDescription(List<String> equipmentIds, String equipmentType) {
+    public boolean existsByIdInAndTypeDescription(List<String> equipmentIds, String equipmentType) {
         return equipmentRepository.existsByIdInAndTypeDescription(equipmentIds, EquipmentType.fromDescription(equipmentType));
+    }
+
+    @Transactional
+    public void deleteByEquipmentIds(List<String> equipmentIds) {
+        equipmentRepository.deleteByIdIn(equipmentIds);
     }
 }

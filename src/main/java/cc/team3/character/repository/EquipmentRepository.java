@@ -10,4 +10,6 @@ import java.util.List;
 public interface EquipmentRepository extends MongoRepository<Equipment, String> {
     @Query(value = "{ '_id': { '$in': ?0 }, 'type': ?1 }", exists = true)
     boolean existsByIdInAndTypeDescription(List<String> equipmentIds, EquipmentType equipmentType);
+
+    void deleteByIdIn(List<String> equipmentIds);
 }

@@ -137,6 +137,7 @@ public class CharacterService {
     @Transactional
     public CharacterResponse.DeleteCharacterResultDTO deleteCharacter(Long characterId) {
         Character character = characterRepository.findById(characterId).orElseThrow(() -> new GeneralException(ErrorStatus.CHARACTER_NOT_FOUND));
+        equipmentService.deleteByEquipmentIds(character.getEquipmentIds());
         characterRepository.delete(character);
 
         return CharacterConverter.toDeleteCharacterResultDTO(characterId);
