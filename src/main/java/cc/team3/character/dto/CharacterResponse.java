@@ -13,6 +13,7 @@ public class CharacterResponse {
             Integer hp,
             String hp_reason,
             Integer exp,
+            Integer level,
             Integer attack,
             Integer defense,
             Double criticalChance,
@@ -56,6 +57,7 @@ public class CharacterResponse {
             Integer attack,
             Integer defense,
             Integer exp,
+            Integer level,
             Integer wins,
             Integer losses
     ) {}
