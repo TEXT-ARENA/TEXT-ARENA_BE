@@ -20,12 +20,19 @@ public class CharacterConverter {
                 character.getExp(),
                 character.getLevel(),
                 character.getAttack(),
+                character.getAttack_reason(),
                 character.getDefense(),
+                character.getDefense_reason(),
                 character.getCriticalChance(),
+                character.getCritical_chance_reason(),
                 character.getCriticalDamage(),
+                character.getCritical_damage_reason(),
                 character.getSpeed(),
+                character.getSpeed_reason(),
                 character.getDodgeChance(),
+                character.getDodge_chance_reason(),
                 character.getAccuracy(),
+                character.getAccuracy_reason(),
                 equipmentList,
                 character.getStatusEffects(),
                 character.getWins(),
@@ -40,12 +47,19 @@ public class CharacterConverter {
                 .hp(request.hp())
                 .hp_reason(request.hp_reason())
                 .attack(request.attack())
+                .attack_reason(request.attack_reason())
                 .defense(request.defense())
+                .defense_reason(request.defense_reason())
                 .criticalChance(request.criticalChance())
+                .critical_chance_reason(request.critical_chance_reason())
                 .criticalDamage(request.criticalDamage())
+                .critical_damage_reason(request.critical_damage_reason())
                 .speed(request.speed())
+                .speed_reason(request.speed_reason())
                 .dodgeChance(request.dodgeChance())
+                .dodge_chance_reason(request.dodge_chance_reason())
                 .accuracy(request.accuracy())
+                .accuracy_reason(request.accuracy_reason())
                 .statusEffects(new ArrayList<>())
                 .build();
     }
