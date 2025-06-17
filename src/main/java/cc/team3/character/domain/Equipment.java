@@ -17,7 +17,7 @@ public class Equipment {
     @Id
     private String id;
     private String name;
-    private EquipmentType type; // WEAPON, TOP, BOTTOM, SHOES
+    private String type;
     private String bonusType; // "attackBonus", "defenseBonus", "speedBonus" 등
     private Double bonusValue;
     private List<Effect> effects;
