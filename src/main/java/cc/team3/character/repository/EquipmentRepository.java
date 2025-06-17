@@ -11,5 +11,5 @@ public interface EquipmentRepository extends MongoRepository<Equipment, String> 
     @Query(value = "{ '_id': { '$in': ?0 }, 'type': ?1 }", exists = true)
     boolean existsByIdInAndTypeDescription(List<String> equipmentIds, EquipmentType equipmentType);
 
-    long deleteByIdIn(List<String> equipmentIds);
+    void deleteByIdIn(List<String> equipmentIds);
 }
