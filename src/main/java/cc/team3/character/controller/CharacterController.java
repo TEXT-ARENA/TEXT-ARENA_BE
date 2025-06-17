@@ -25,7 +25,7 @@ public class CharacterController {
     }
 
     @Operation(summary = "장비 생성", description = "장비를 생성하고자 하는 캐릭터  ID를 넣어주세요 ! <br><br>" +
-            "equipmentType: 무기, 모자, 상의, 신발 중 하나 입력해주세요 ! <br> equipmentName: 장비 이름 <br> description: 장비 설명")
+            "equipmentType: weapon, hat, top, shoes 중 하나 입력해주세요 ! <br> equipmentName: 장비 이름 <br> description: 장비 설명")
     @PostMapping("/{characterId}/equipments")
     public ApiResponse<CharacterResponse.CharacterDetailsResponseDTO> createWeapon(@PathVariable("characterId") Long characterId, @RequestBody CharacterRequest.CreateEquipmentRequestDTO request) {
         return ApiResponse.onSuccess(characterService.createEquipment(characterId, request));

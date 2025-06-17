@@ -92,8 +92,9 @@ public class CharacterConverter {
     public static CharacterResponse.ReadEquipmentsResultDTO toReadEquipmentsResultDTO(Equipment equipment) {
         return new CharacterResponse.ReadEquipmentsResultDTO(
                 equipment.getName(),
-                equipment.getType().getDescription(),
+                equipment.getType(),
                 equipment.getBonusType(),
+                equipment.getBonusType_reason(),
                 equipment.getBonusValue(),
                 equipment.getEffects()
         );

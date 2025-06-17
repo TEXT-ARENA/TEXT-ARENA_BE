@@ -6,13 +6,14 @@ import cc.team3.character.dto.CharacterResponse;
 
 public class EquipmentConverter {
     public static Equipment toEquipment(CharacterResponse.EquipmentDTO request, String name, String type) {
-        EquipmentType equipmentType = EquipmentType.fromDescription(type);
         return Equipment.builder()
                 .name(name)
-                .type(equipmentType)
+                .type(type)
                 .bonusType(request.bonusType())
+                .bonusType_reason(request.bonusType_reason())
                 .bonusValue(request.bonusValue())
                 .effects(request.effects())
+                .imageUrl(request.imageUrl())
                 .build();
     }
 }
