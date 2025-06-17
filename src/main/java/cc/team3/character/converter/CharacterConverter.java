@@ -96,7 +96,8 @@ public class CharacterConverter {
                 equipment.getBonusType(),
                 equipment.getBonusType_reason(),
                 equipment.getBonusValue(),
-                equipment.getEffects()
+                equipment.getEffects(),
+                equipment.getImageUrl()
         );
     }
 }

@@ -95,6 +95,7 @@ public class CharacterResponse {
             String bonusType,
             String bonusType_reason,
             Object bonusValue,
-            List<Effect> effects
+            List<Effect> effects,
+            String imageUrl
     ) {}
 }
