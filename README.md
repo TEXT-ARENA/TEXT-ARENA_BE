@@ -1,7 +1,7 @@
 # TEXT-ARENA_BE
 
 ## Cloud Architecture
-<img width="700" height="500" alt="Text-Arena 아키텍쳐 v3 0" src="https://github.com/user-attachments/assets/d3731f02-aa2d-419e-aa69-1a6ba945a504" />
+<img width="700" height="600" alt="Text-Arena 아키텍쳐 v3 0" src="https://github.com/user-attachments/assets/d3731f02-aa2d-419e-aa69-1a6ba945a504" />
 
 ## Commit
 | 커밋 타입 | 설명 | 예시 |
